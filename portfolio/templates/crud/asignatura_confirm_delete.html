@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Eliminar Asignatura{% endblock %}
+
+{% block content %}
+<h3 class="mb-4">¿Eliminar asignatura?</h3>
+
+<p>
+    Estás por eliminar:
+    <strong>{{ asignatura.nombre }}</strong>
+    {% if asignatura.programa %}
+        del programa <strong>{{ asignatura.programa.nombre }}</strong>.
+    {% endif %}
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'asignatura_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

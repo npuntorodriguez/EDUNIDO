@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">{{ titulo }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.nombre.label_tag }}
+        {{ form.nombre }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.programa.label_tag }}
+        {{ form.programa }}
+    </div>
+
+    <button class="btn btn-success">Guardar</button>
+    <a href="{% url 'asignatura_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

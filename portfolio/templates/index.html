@@ -24,4 +24,22 @@
         </div>
     {% endfor %}
 </div>
+<div class="container mt-4">
+
+    <!-- Botones de Administración -->
+    {% if user.is_staff %}
+    <div class="text-center mb-4">
+        <h2 class="mb-3 text-muted">Administración</h2>
+
+        <a href="{% url 'programa_list' %}" class="btn btn-outline-primary btn-lg mx-2">
+            📘Gestionar Programas
+        </a>
+
+        <a href="{% url 'asignatura_list' %}" class="btn btn-outline-secondary btn-lg mx-2">
+            📚Gestionar Asignaturas
+        </a>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock %}

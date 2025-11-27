@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Sistema de Asistencia - EDUNIDO{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-6 max-w-6xl">
+    <header class="text-center mb-8">
+        <h1 id="titulo-sistema" class="text-4xl font-bold text-indigo-800 mb-2">
+            Sistema de Asistencia Escolar de EDUNIDO
+        </h1>
+        <p id="nombre-instituto" class="text-lg text-indigo-600">Instituto Educativo Internacional</p>
+    </header>
+
+   <!-- <nav class="flex justify-center mb-8">
+        <div class="bg-white rounded-lg shadow-md p-2 flex space-x-2">
+            <button id="btn-registro" class="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium transition-colors hover:bg-indigo-700">
+                📝 Tomar Asistencia
+            </button> 
+            <button id="btn-reportes" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-medium transition-colors hover:bg-gray-300">
+                📊 Ver Reportes``
+            </button>
+        </div>
+    </nav> -->
+
+    <div id="seccion-registro" class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Registro de Asistencia</h2>
+
+        <form method="POST" action="{% url 'asistencia' %}">
+            {% csrf_token %}
+            <div class="grid md:grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
+                <div>
+                    <label for="select-profesor" class="block text-sm font-medium text-gray-700 mb-2">Profesor</label> 
+                    <select name="select-profesor" id="select-profesor" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Seleccionar profesor</option>
+                        {% for profesor in profesores %}
+                            <option value="{{ profesor.id }}">{{ profesor.nombre }} {{ profesor.apellido }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="select-asignatura" class="block text-sm font-medium text-gray-700 mb-2">Asignatura</label> 
+                    <select name="select-asignatura" id="select-asignatura" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Seleccionar asignatura</option>
+                        {% for asignatura in asignaturas %}
+                            <option value="{{ asignatura.id }}">
+                                {{ asignatura.nombre }} - 
+                                {% if asignatura.programa %}
+                                    {{ asignatura.programa.nombre }}
+                                {% else %}
+                                    Sin Programa
+                                {% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="select-nivel" class="block text-sm font-medium text-gray-700 mb-2">Nivel/Curso</label> 
+                    <select name="select-nivel" id="select-nivel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="">Seleccionar nivel</option>
+                        {% for nivel in niveles %}
+                            <option value="{{ nivel.id }}">{{ nivel.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div id="lista-estudiantes" class="mb-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Lista de Estudiantes</h3>
+                <div class="flex flex-col gap-2">
+                    {% for estudiante in estudiantes %}
+                        <div class="flex items-center space-x-4">
+                            <span class="w-1/3">{{ estudiante.nombre }} {{ estudiante.apellido }}</span>
+                            <select name="estudiante_{{ estudiante.id }}" class="w-1/3 p-2 border border-gray-300 rounded-lg">
+                                <option value="P">P - Presente</option>
+                                <option value="A">A - Ausente</option>
+                                <option value="J">J - Justificado</option>
+                            </select>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-700 transition-colors">
+                💾 Guardar Asistencia
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

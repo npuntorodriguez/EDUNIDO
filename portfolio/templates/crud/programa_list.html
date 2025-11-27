@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Programas</h2>
+<a href="{% url 'programa_create' %}" class="btn btn-primary mb-3">+ Crear Programa</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for programa in programas %}
+        <tr>
+            <td>{{ programa.nombre }}</td>
+            <td>
+                <a href="{% url 'programa_edit' programa.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'programa_delete' programa.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
