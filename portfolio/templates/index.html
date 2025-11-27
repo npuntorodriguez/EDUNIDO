@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Inicio - EDUNIDO{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% for programa in programas %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">{{ programa.nombre }}</h5>
+                </div>
+                <div class="card-body">
+                    {% if programa.asignatura_set.all %}
+                        <ul class="list-group list-group-flush">
+                            {% for asignatura in programa.asignatura_set.all %}
+                                <li class="list-group-item">{{ asignatura.nombre }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted mb-0">Sin asignaturas</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

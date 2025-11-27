@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Taller Música en Colores{% endblock %}
+
+{% block content %}
+<div class="bg-primary text-white text-center py-4">
+    <h1 class="display-4">Taller Música en Colores de EDUNIDO</h1>
+    <p class="lead text-muted fw-bold mb-0">Horario de Base: Lunes, 10:00 AM - 11:00 AM (Hora Chile)</p>
+</div>
+
+    <section id="clases" class="row mb-5 justify-content-center">
+        <h2 class="text-center mb-4">Nuestras Clases</h2>
+
+        <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex">
+            <div class="card shadow-sm p-3 mx-auto w-100">
+                <h3 class="card-title text-muted">Metalófono y Teclado</h3>
+                <p class="card-text">Clases online con enfoque en el método de Música en Colores.</p>
+                <button class="btn btn-outline-info btn-sm ver-detalle" data-detalle="#piano-detalle">Ver Detalle</button>
+                <p id="piano-detalle" class="detalle-oculto mt-2 text-muted">
+                    Taller con inscripciones disponibles desde Octubre a Junio. 
+                    ¡Consulta por su cupo! Para niños de 0 a 8 años de habla hispana.
+                    ¡Revisa tu horario más abajito!
+                </p>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Contacto - EDUNIDO{% endblock %}
+
+{% block content %}
+<header class="bg-primary text-white text-center py-4">
+    <h1 class="display-4">Contáctanos</h1>
+    <p class="lead mb-0">Estamos aquí para ayudarte y responder tus dudas</p>
+</header>
+
+<main class="container my-5">
+    <section class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <div class="card shadow-sm p-4">
+                <h2 class="card-title mb-4">Formulario de Contacto</h2>
+
+                <form method="post" action="">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="asunto" class="form-label">Asunto</label>
+                        <input type="text" class="form-control" id="asunto" name="asunto" placeholder="Motivo del contacto" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock %}
