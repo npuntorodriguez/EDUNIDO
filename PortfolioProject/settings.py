@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-j&*9&&7dwd*z_0tclyw!a6pvfm=70rm8gschvw(ng1f-s)o2hp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['edunido-producto.onrender.com','127.0.0.1']
 
 
 # PortfolioProject/settings.py
