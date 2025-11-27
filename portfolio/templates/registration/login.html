@@ -1,0 +1,42 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; font-family: sans-serif;">
+    <h2 style="text-align: center; color: #4B0082;">Iniciar Sesión</h2>
+    
+    {% if form.errors %}
+        <p style="color: red; text-align: center;">Tu nombre de usuario o contraseña es incorrecto. Inténtalo de nuevo.</p>
+    {% endif %}
+
+    {% if next %}
+        <p style="color: #555; text-align: center; font-size: 0.9em;">Necesitas iniciar sesión para ver la página de asistencia.</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        
+        <label for="{{ form.username.id_for_label }}" style="display: block; margin-top: 15px; font-weight: bold;">Usuario:</label>
+        {{ form.username }}
+        
+        <label for="{{ form.password.id_for_label }}" style="display: block; margin-top: 15px; font-weight: bold;">Contraseña:</label>
+        {{ form.password }}
+        
+        <input type="submit" value="Iniciar Sesión" style="width: 100%; padding: 10px; background-color: #4B0082; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 25px;">
+        
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+</div>
+
+<style>
+/* Estilos para que el formulario se vea mejor (opcional) */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+</style>
+
+{% endblock %}
